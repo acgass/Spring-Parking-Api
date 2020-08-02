@@ -1,12 +1,14 @@
-package com.acgass.springparkingapi.service;
+package com.acgass.springparkingapi.Service;
 
-import com.
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
-@Service
+@Component
 public class ParkingMeterService {
+    private String repsString;
 
-    @Autowried
-    public ParkingMeterService(){
-
+    @Autowired
+    public ParkingMeterService(String repsString) {
+        this.repsString = repsString;
     }
 }

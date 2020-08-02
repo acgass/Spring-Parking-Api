@@ -1,5 +1,4 @@
-package com.acgass.springparkingapi.domain;
-
+package com.acgass.springparkingapi.Domain;
 import java.io.Serializable;
 
 public class ParkingMeter implements Serializable {
