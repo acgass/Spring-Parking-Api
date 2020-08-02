@@ -8,7 +8,7 @@ public class ParkingController{
 
     @Autowired
     public ParkingController(ParkinngMeterService meterService){
-        this.meterService = meterService
+        this.meterService = meterService;
     }
 
 

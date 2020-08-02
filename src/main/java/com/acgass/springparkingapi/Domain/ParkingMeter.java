@@ -9,11 +9,11 @@ public class ParkingMeter implements Serializable {
     private boolean isOpen;
     private String moneyPaid;
 
-    public ParkingMeter (String lcation, long meterId, String timeRemaining, String moneyPaid){
-        this.locaiton = lcation;
+
+    public ParkingMeter(String locaiton, long meterId, String timeRemaining) {
+        this.locaiton = locaiton;
         this.meterId = meterId;
         this.timeRemaining = timeRemaining;
-        this.moneyPaid = moneyPaid;
     }
 
     public String getLocaiton() {
@@ -56,7 +56,7 @@ public class ParkingMeter implements Serializable {
         this.moneyPaid = moneyPaid;
     }
 
-    public updateTime(String amountPaid){
+    public String updateTime(String amountPaid){
         // TODO: implement once util class is flushed out
         return timeRemaining;
     }
