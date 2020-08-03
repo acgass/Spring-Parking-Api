@@ -13,6 +13,7 @@ public class ParkingMeter implements Serializable {
         this.locaiton = locaiton;
         this.meterId = meterId;
         this.timeRemaining = timeRemaining;
+        this.isOpen = true;
     }
 
     public String getLocaiton() {
