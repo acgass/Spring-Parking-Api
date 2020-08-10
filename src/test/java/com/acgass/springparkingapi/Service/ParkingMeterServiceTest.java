@@ -1,7 +1,6 @@
 package com.acgass.springparkingapi.Service;
 
 import com.acgass.springparkingapi.Domain.ParkingMeter;
-import org.junit.Before;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -29,8 +28,8 @@ class ParkingMeterServiceTest {
     @BeforeAll
     public void setUp(){
         parkingMeterService = new ParkingMeterService();
-        expectedMeter1.setOpen(true);
-        expectedMeter2.setOpen(true);
+        expectedMeter1.setIsOpen("true");
+        expectedMeter2.setIsOpen("true");
     }
 
     @Test
@@ -42,14 +41,14 @@ class ParkingMeterServiceTest {
     @Test
     public void getAllOpenMetersReturnsListOOnlyOpenMeters(){
         List<ParkingMeter> meters = parkingMeterService.findOpenParkingMeters();
-        assertTrue(meters.get(0).isOpen());
-        assertTrue(meters.get(1).isOpen());
+        assertEquals("true", meters.get(0).getIsOpen());
+        assertEquals("true", meters.get(1).getIsOpen());
     }
 
     @Test
     public void  findParkingMeterByIdReturnsCorrectParkingMeter() {
         ParkingMeter actualMeter = parkingMeterService.findPakringMeterById(2L);
-        assertEquals(2L, actualMeter.getMeterId());
+        assertEquals(2L, actualMeter.getId());
     }
 
     @Test
