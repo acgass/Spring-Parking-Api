@@ -2,6 +2,7 @@ package com.acgass.springparkingapi.Config;
 
 import com.amazonaws.auth.AWSCredentials;
 import com.amazonaws.auth.BasicAWSCredentials;
+import com.amazonaws.regions.Region;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDB;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient;
 import io.micrometer.core.instrument.util.StringUtils;
@@ -10,9 +11,10 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import static com.amazonaws.regions.Regions.US_EAST_1;
+
 @Configuration
-@EnableDynamoDBRepositories
-        (basePackages = "com.acgass.springparkingapi.Repository")
+@EnableDynamoDBRepositories(basePackages = "com.acgass.springparkingapi.Repository")
 public class DynamoDBConfig {
     @Value("${amazon.dynamodb.endpoint}")
     private String amazonDynamoDBEndpoint;
@@ -31,7 +33,6 @@ public class DynamoDBConfig {
         if (!StringUtils.isEmpty(amazonDynamoDBEndpoint)) {
             amazonDynamoDB.setEndpoint(amazonDynamoDBEndpoint);
         }
-
         return amazonDynamoDB;
     }
 

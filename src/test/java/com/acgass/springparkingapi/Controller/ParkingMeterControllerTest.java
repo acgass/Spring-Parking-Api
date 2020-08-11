@@ -18,6 +18,7 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.TestInstance.Lifecycle.*;
@@ -55,6 +56,7 @@ class ParkingMeterControllerTest {
         when(parkingMeterService.findOpenParkingMeters()).thenReturn(Arrays.asList(meter1, meter2));
         when(parkingMeterService.findPakringMeterById(anyLong())).thenReturn(meter3);
     }
+
     @Test
     public void getAllOpenMetersReturns200() throws Exception {
        mockMvc.perform(get("/meter/getOpen")).andExpect(status().is(200));

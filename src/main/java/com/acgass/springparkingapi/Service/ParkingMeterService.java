@@ -1,19 +1,23 @@
 package com.acgass.springparkingapi.Service;
 
 import com.acgass.springparkingapi.Domain.ParkingMeter;
+import com.acgass.springparkingapi.Repository.ParkingMeterRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Component
 public class ParkingMeterService {
 
+    private ParkingMeterRepository parkingMeterRepository;
+
     @Autowired
-    public ParkingMeterService() {
-        super();
+    public ParkingMeterService(ParkingMeterRepository parkingMeterRepository) {
+        this.parkingMeterRepository = parkingMeterRepository;
     }
 
     public List<ParkingMeter> findOpenParkingMeters(){
@@ -25,9 +29,7 @@ public class ParkingMeterService {
     }
 
     public ParkingMeter findPakringMeterById(long meterId){
-        List<ParkingMeter> meters = getAllMeters();
-        ParkingMeter meter = meters.stream().filter(parkingMeter -> parkingMeter.getId() == meterId).findAny().orElse(null);
-        return meter;
+        return parkingMeterRepository.findById(meterId);
     }
 
     private List<ParkingMeter> getAllMeters(){
